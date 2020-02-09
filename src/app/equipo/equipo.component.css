@@ -1,0 +1,24 @@
+.tarjetaEquipo{
+    display: grid;
+    grid-template-areas: 
+    "foto nombre"
+    "descripcion descripcion";
+}
+
+.tarjetaEquipo__foto{
+    grid-area: foto;
+    margin: 5px;
+    padding: 5px;
+}
+
+.tarjetaEquipo__nombre{
+    grid-area: nombre;
+    margin: 5px;
+    padding: 5px;
+}
+
+.tarjetaEquipo__descripcion{
+    grid-area: descripcion;
+    margin: 5px;
+    padding: 5px;
+}

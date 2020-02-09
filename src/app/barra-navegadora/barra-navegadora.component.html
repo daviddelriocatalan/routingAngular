@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
+  <a class="navbar-brand text-white" routerLink="/">Logo</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" (click)="isMenuCollapsed = !isMenuCollapsed">
+
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+    <div class="navbar-nav">
+
+      <a class="nav-item nav-link text-white" routerLinkActive="active" routerLink="/" (click)="isMenuCollapsed = true">Home <span class="sr-only">(current)</span></a>
+
+      <a class="nav-item nav-link text-white" routerLinkActive="active" routerLink="proyectos" (click)="isMenuCollapsed = true">Proyectos</a>
+
+      <a class="nav-item nav-link text-white" routerLinkActive="active" routerLink="equipo" (click)="isMenuCollapsed = true">Equipo</a>
+
+    </div>
+
+  </div>
+
+</nav>
