@@ -6,12 +6,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { FormsModule } from '@angular/forms';
+
 import { BarraNavegadoraComponent } from './barra-navegadora/barra-navegadora.component';
 import { HomeComponent } from './home/home.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { EquipoComponent } from './equipo/equipo.component';
 import { FooterComponent } from './footer/footer.component';
-import { Proyecto1Component } from './proyecto1/proyecto1.component';
+import { ProyectoComponent } from './proyecto/proyecto.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -22,12 +25,14 @@ import { Proyecto1Component } from './proyecto1/proyecto1.component';
     ProyectosComponent,
     EquipoComponent,
     FooterComponent,
-    Proyecto1Component
+    ProyectoComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   exports:[
     BarraNavegadoraComponent

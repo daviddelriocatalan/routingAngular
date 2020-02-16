@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Empleado } from '../modelos/empleado.modelo';
+
 @Component({
   selector: 'app-equipo',
   templateUrl: './equipo.component.html',
@@ -7,49 +9,90 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EquipoComponent implements OnInit {
 
-  persona1 : boolean = false;
-  persona2 : boolean = false;
-  persona3 : boolean = false;
-  colaborador1 : boolean = false;
-  
-  mostrarPersona1(){
-    if (this.persona1) {
-      this.persona1 = false;
-    } else {
-      this.persona1 = true;
-      this.persona2 = false;
-      this.persona3 = false;
-    }
-  } 
+  empleados: Array<Empleado> = [
+    { id: 0, nombre: 'Freddie', apellidos: 'Mercury', puesto: 'Cantante' },
+    { id: 1, nombre: 'Eric', apellidos: 'Clapton', puesto: 'Lead Guitar' },
+    { id: 2, nombre: 'James', apellidos: 'Hetfield', puesto: 'Rhythm Guitar' },
+    { id: 3, nombre: 'Cliff', apellidos: 'Burton', puesto: 'Bajo' },
+    { id: 4, nombre: 'John', apellidos: 'Bonham', puesto: 'Bateria' }
+  ];
 
-  mostrarPersona2(){
-    if (this.persona2) {
-      this.persona2 = false;
-    } else {
-      this.persona2 = true;
-      this.persona1 = false;
-      this.persona3 = false;
+  verFormularioCrear: boolean = true;
+  verFormularioModificar: boolean = true;
+
+  idEmpleado: string;
+  nombreEmpleado: string = "Elton";
+  apellidosEmpleado: string = "John";
+  puestoEmpleado: string = "Pianista";
+
+  //VISUALIZAR
+  verEmpleado(empleado) {
+    alert("ID: " + empleado.id +
+      " - Nombre: " + empleado.nombre +
+      " - Apellidos: " + empleado.apellidos +
+      " - Puesto: " + empleado.puesto);
+  }
+
+  //BORRAR
+  borrarEmpleado(empleado) {
+
+    for (let i = 0; i < this.empleados.length; i++) {
+      if (this.empleados[i].id == empleado.id) {
+        this.empleados.splice(i, 1);
+      }
     }
   }
 
-  mostrarPersona3(){
-    if (this.persona3) {
-      this.persona3 = false;
+  //MODIFICAR
+  mostrarFormularioModificar(empleado) {
+
+    if (this.verFormularioModificar) {
+
+      this.verFormularioModificar = false;
+
+      this.idEmpleado = empleado.id;
+      this.nombreEmpleado = empleado.nombre;
+      this.apellidosEmpleado = empleado.apellidos;
+      this.puestoEmpleado = empleado.puesto;
+
     } else {
-      this.persona3 = true;
-      this.persona1 = false;
-      this.persona2 = false;
+
+      this.verFormularioModificar = true;
+      this.nombreEmpleado = "Elton";
+      this.apellidosEmpleado = "John";
+      this.puestoEmpleado = "Pianista";
     }
   }
 
-  mostrarColaborador1(){
-    if (this.colaborador1) {
-      this.colaborador1 = false;
-    } else {
-      this.colaborador1 = true;
+  modificarMusico() {
+    for (let i = 0; i < this.empleados.length; i++) {
+
+      if (this.empleados[i].id == parseInt(this.idEmpleado)) {
+
+        this.empleados.splice(i, 1);
+        this.empleados.push({ id: parseInt(this.idEmpleado), nombre: this.nombreEmpleado, apellidos: this.apellidosEmpleado, puesto: this.puestoEmpleado });
+        this.verFormularioModificar = true;
+      }
     }
   }
 
+  //CREAR
+  mostrarFormularioCrear() {
+    if (this.verFormularioCrear) {
+      this.verFormularioCrear = false;
+    } else {
+      this.verFormularioCrear = true;
+    }
+  }
+
+  calcularIdNuevoEmpleado() {
+    return this.empleados.length + 1;
+  }
+
+  crearEmpleado() {
+    this.empleados.push({ id: this.calcularIdNuevoEmpleado(), nombre: this.nombreEmpleado, apellidos: this.apellidosEmpleado, puesto: this.puestoEmpleado });
+    this.verFormularioCrear = true;
+  }
 
   constructor() { }
 

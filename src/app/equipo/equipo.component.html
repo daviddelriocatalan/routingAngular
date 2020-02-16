@@ -1,5 +1,82 @@
 <div class="container">
 
- <h1>EQUIPOE WORKS!</h1>
+    <table class="table table-bordered table-striped tabla">
+        <thead>
+            <tr class="filters">
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puesto</th>
+                <th><button class="btn btn-success" (click)="mostrarFormularioCrear()"> + </button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let empleado of empleados">
+                <td (click)="verEmpleado(empleado)">{{ empleado.id }}</td>
+                <td (click)="verEmpleado(empleado)">{{ empleado.nombre }}</td>
+                <td (click)="verEmpleado(empleado)">{{ empleado.apellidos }}</td>
+                <td (click)="verEmpleado(empleado)">{{ empleado.puesto }}</td>
+                <td><button class="btn btn-warning" (click)="mostrarFormularioModificar(empleado)"> Modificar Empleado
+                    </button>
+                </td>
+                <td><button class="btn btn-danger" (click)="borrarEmpleado(empleado)"> Borrar Empleado </button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="!verFormularioModificar">
+        <div class="d-flex justify-content-center">
+            <h3>Modificar</h3>
+        </div>
+        <div class="d-flex justify-content-center">
+            <table>
+                <tr>
+                    <td>ID: </td>
+                    <td><input type="text" class="form-control" [(ngModel)]="idEmpleado" [placeholder]="idEmpleado" disabled></td>
+                </tr>
+                <tr>
+                    <td>Nombre: </td>
+                    <td><input type="text" class="form-control" [(ngModel)]="nombreEmpleado" [placeholder]="nombreEmpleado"></td>
+                </tr>
+                <tr>
+                    <td>Apellidos: </td>
+                    <td><input type="text" class="form-control" [(ngModel)]="apellidosEmpleado" [placeholder]="apellidoEmpleado">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ciudad: </td>
+                    <td><input type="text" class="form-control" [(ngModel)]="puestoEmpleado" [placeholder]="puestoEmpleado"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary m-3" (click)="modificarMusico()"> Modificar Empleado </button>
+        </div>
+    </div>
+
+    <div *ngIf="!verFormularioCrear">
+        <div class="d-flex justify-content-center">
+            <h3>Crear</h3>
+        </div>
+        <div class="d-flex justify-content-center">
+            <table>
+                <tr>
+                    <td>Nombre: </td>
+                    <td><input type="text" class="form-control" [(ngModel)]="nombreEmpleado" [placeholder]="nombreEmpleado"></td>
+                </tr>
+                <tr>
+                    <td>Apellidos: </td>
+                    <td><input type="text" class="form-control" [(ngModel)]="apellidosEmpleado" [placeholder]="apellidosEmpleado">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Puesto: </td>
+                    <td><input type="text" class="form-control" [(ngModel)]="puestoEmpleado" [placeholder]="puestoEmpleado"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary m-3" (click)="crearEmpleado()"> Crear Empleado </button>
+        </div>
+    </div>
 
 </div>
